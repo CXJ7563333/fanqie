@@ -393,6 +393,18 @@ body.st .chapter::before{opacity:var(--reveal,1)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 /* 作品 3D 倾斜 */
 .work{transform-style:preserve-3d;will-change:transform}
+
+/* 拼贴装饰元素 */
+.collage-decor{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.collage-decor .deco{position:absolute;opacity:.5;filter:drop-shadow(2px 3px 0 rgba(58,37,54,.08))}
+.collage-decor .deco.d1{top:14%;left:6%;width:46px;transform:rotate(-12deg)}
+.collage-decor .deco.d2{top:20%;right:8%;width:40px;transform:rotate(8deg)}
+.collage-decor .deco.d3{bottom:32%;left:10%;width:36px;transform:rotate(5deg)}
+.collage-decor .deco.d4{bottom:20%;right:12%;width:48px;transform:rotate(-6deg)}
+.collage-decor .deco.d5{top:48%;left:4%;width:28px;transform:rotate(15deg)}
+.collage-decor .deco.d6{top:55%;right:5%;width:32px;transform:rotate(-10deg)}
+.collage-decor .deco.d7{top:8%;left:30%;width:24px;transform:rotate(20deg)}
+.collage-decor .deco.d8{bottom:12%;left:35%;width:26px;transform:rotate(-15deg)}
 /* 联系页：信封 + 邮戳 */
 .mail{position:relative;width:190px;height:118px;margin:0 auto 38px;perspective:900px}
 .env{position:absolute;inset:0;background:var(--mauve);border-radius:6px;box-shadow:0 16px 34px rgba(0,0,0,.3)}
@@ -454,9 +466,20 @@ body.st .mail .flap,body.st .mail .letter,body.st .mail .stamp svg{transition:no
       </div>
       <div class="steps seq" data-d="360"></div>
     </div>
+    <!-- 拼贴装饰元素 -->
+    <div class="collage-decor">
+      <svg class="deco d1" viewBox="0 0 24 24" fill="none" stroke="#C49BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+      <svg class="deco d2" viewBox="0 0 24 24" fill="none" stroke="#A9CDB8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+      <svg class="deco d3" viewBox="0 0 24 24" fill="none" stroke="#F2C4CE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>
+      <svg class="deco d4" viewBox="0 0 24 24" fill="none" stroke="#C49BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="10" r="1" fill="#C49BAE"/><circle cx="12" cy="7" r="1" fill="#A9CDB8"/><circle cx="16" cy="10" r="1" fill="#F2C4CE"/><path d="M12 22a10 10 0 0 1 0-20 8 8 0 0 1 8 8c0 2-1 3-3 3h-2a2 2 0 0 0-2 2c0 1.5 1 2 1 3z"/></svg>
+      <svg class="deco d5" viewBox="0 0 24 24" fill="#F7E9DC" stroke="#C49BAE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg class="deco d6" viewBox="0 0 24 24" fill="none" stroke="#A9CDB8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 22 20 2 20"/></svg>
+      <svg class="deco d7" viewBox="0 0 24 24" fill="#F2C4CE"><circle cx="12" cy="12" r="8"/></svg>
+      <svg class="deco d8" viewBox="0 0 24 24" fill="none" stroke="#C49BAE" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+    </div>
     <div class="kicker seq" data-d="480" id="kicker"></div>
     <h1 class="seq" data-d="620">The Grand Resume</h1>
-    <div class="handline seq" data-d="760">你好，我是档案管理员 · a girl who tells stories in frames</div>
+    <div class="handline seq" data-d="760">你好，欢迎来到我的个人简历 · a girl who tells stories in frames</div>
     <div class="objective seq" data-d="880">求职意向 · 融媒视频创作 / 动态视觉设计岗位</div>
     <div class="polaroid seq" data-d="1000" id="polaroid">
       <span class="pin"></span>
@@ -886,7 +909,7 @@ function runLoader(done){
 /* ---------- hero 入场（打字机 + seq） ---------- */
 function startHero(){
   var kicker = document.getElementById('kicker');
-  var LINE = 'The Grand Resume · 档案编号 №.2004';
+  var LINE = 'The Grand Resume · 个人简历 №.2004';
   if(kicker && !REDUCE){
     var i = 0;
     var timer = setInterval(function(){
